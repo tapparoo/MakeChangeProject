@@ -1,10 +1,15 @@
 package com.skilldistillery.makechange;
 
+import java.util.Scanner;
+
 public class MakeChangeApp {
 
     public static void main(String[] args) {
-	// TODO Auto-generated method stub
-
+	Scanner sc = new Scanner(System.in);
+	
+	
+	
+	sc.close();
     }
 
 }
