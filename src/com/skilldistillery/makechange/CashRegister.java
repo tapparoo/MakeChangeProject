@@ -3,7 +3,7 @@ package com.skilldistillery.makechange;
 public class CashRegister {
     private double purchasePrice;
     private double cashTendered;
-    private byte twenty, ten, five, one, quarter, dime, nickel, penny;
+    private int twenty, ten, five, one, quarter, dime, nickel, penny;
     private double changeDue;
 
     CashRegister(double price, double cash) {
@@ -77,28 +77,28 @@ public class CashRegister {
 	change += "\nChange due to customer: $" + this.changeDue;
 
 	if (this.twenty > 0) {
-	    change += "\n\tTwenties: " + this.twenty;
+	    change += String.format("\n%15s => %5d", "Twenties", this.twenty);
 	}
 	if (this.ten > 0) {
-	    change += "\n\t    Tens: " + this.ten;
+	    change += String.format("\n%15s => %5d", "Tens", this.ten);
 	}
 	if (this.five > 0) {
-	    change += "\n\t   Fives: " + this.five;
+	    change += String.format("\n%15s => %5d", "Fives:", this.five);
 	}
 	if (this.one > 0) {
-	    change += "\n\t    Ones: " + this.one;
+	    change += String.format("\n%15s => %5d", "Ones:", this.one);
 	}
 	if (this.quarter > 0) {
-	    change += "\n\tQuarters: " + this.quarter;
+	    change += String.format("\n%15s => %5d", "Quarters:", this.quarter);
 	}
 	if (this.dime > 0) {
-	    change += "\n\t   Dimes: " + this.dime;
+	    change += String.format("\n%15s => %5d", "Dimes:", this.dime);
 	}
 	if (this.nickel > 0) {
-	    change += "\n\t Nickels: " + this.nickel;
+	    change += String.format("\n%15s => %5d", "Nickels:", this.nickel);
 	}
 	if (this.penny > 0) {
-	    change += "\n\t Pennies: " + this.penny;
+	    change += String.format("\n%15s => %5d", "Pennies:", this.penny);
 	}
 
 	return change;

@@ -10,7 +10,7 @@ public class MakeChangeApp {
 	double totalPrice, cashTendered;
 	CashRegister register;
 
-	System.out.print("Use the GUI? (Not functional yet) Y/N: ");
+	System.out.print("Use the GUI? Y/N: ");
 	
 	if (sc.next().equalsIgnoreCase("y")) {
 	    useGui();
@@ -30,15 +30,11 @@ public class MakeChangeApp {
 		System.out.print("Invalid input.");
 	    }
 	}
-
 	sc.close();
-
     }
 
     public static void useGui() {
 	CashRegisterGUI gui = new CashRegisterGUI();
-	gui.useGUI();
-
+	gui.init();
     }
-
 }
