@@ -9,16 +9,14 @@ public class CashRegister {
     CashRegister(double price, double cash) {
 	this.purchasePrice = price;
 	this.cashTendered = cash;
-	this.changeDue = this.cashTendered - this.purchasePrice;
+	this.changeDue = (double)Math.round((this.cashTendered - this.purchasePrice) * 100)/100;
     }
 
     public String makeChange() {
 	if (this.changeDue < 0) {
-	    System.out.println("Insufficient funds.");
-	    return "";
+	    return "Insufficient funds.";
 	} else if (this.purchasePrice <= 0) {
-	    System.out.println("Invalid purchase price.");
-	    return "";
+	    return "Invalid purchase price.";
 	} 
 	if (this.changeDue >= 1.0) {
 	    calcBills();
@@ -27,7 +25,7 @@ public class CashRegister {
 	    calcCoins();
 	}
 
-	return getChangeSummary();
+	return printChangeSummary();
     }
 
     private void calcBills() {
@@ -82,15 +80,36 @@ public class CashRegister {
 	}
     }
 
-    public String getChangeSummary() {
+    public String printChangeSummary() {
 	String change = "";
 	
 	change += "\nChange due to customer: $" + this.changeDue;
-	change += "\n\tTwenties: " + this.twenty + "\n\tTens: " + this.ten + "\n\tFives: " + this.five + "\n\tOnes: "
-		+ this.one;
-	change += "\n\tQuarters: " + this.quarter + "\n\tDimes: " + this.dime + "\n\tNickels: " + this.nickel
-		+ "\n\tPennies: " + this.penny;
-
+	
+	if (this.twenty > 0) {
+	    change += "\n\tTwenties: " + this.twenty;
+	}
+	if (this.ten > 0) {
+	    change += "\n\tTens: " + this.ten;
+	}
+	if (this.five > 0) {
+	    change += "\n\tFives: " + this.five;
+	}
+	if (this.one > 0) {
+	    change += "\n\tOnes: " + this.one;
+	}
+	if (this.quarter > 0) {
+	    change += "\n\tQuarters: " + this.quarter;
+	}
+	if (this.dime > 0) {
+	    change += "\n\tDimes: " + this.dime;
+	}
+	if (this.nickel > 0) {
+	    change += "\n\tNickels: " + this.nickel;
+	}
+	if (this.penny > 0) {
+	    change += "\n\tPennies: " + this.penny;
+	}
+	
 	return change;
     }
 }
