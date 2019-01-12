@@ -9,6 +9,7 @@ public class CashRegister {
     CashRegister(double price, double cash) {
 	this.purchasePrice = price;
 	this.cashTendered = cash;
+	// Rounding/casting because I was getting some pretty random decimals
 	this.changeDue = (double)Math.round((this.cashTendered - this.purchasePrice) * 100)/100;
     }
 
@@ -29,6 +30,7 @@ public class CashRegister {
     }
 
     private void calcBills() {
+	// Casting to ignore coins
 	int changeDueRemaining = (int) this.changeDue;
 	int temp;
 	
@@ -50,11 +52,11 @@ public class CashRegister {
 	if (changeDueRemaining >= 1) {
 	    temp = (byte) (changeDueRemaining / 1);
 	    this.one += temp;
-	    changeDueRemaining -= temp;
 	}
     }
 
     private void calcCoins() {
+	// Casting to ignore dollar bills.  Multiply by 100 to work with integers for simplicity
 	int changeDueRemaining = (int)((this.changeDue - (int)this.changeDue) * 100);
 	double temp;
 
@@ -76,7 +78,6 @@ public class CashRegister {
 	if (changeDueRemaining >= 1) {
 	    temp = changeDueRemaining / 1;
 	    this.penny += temp;
-	    changeDueRemaining -= temp;
 	}
     }
 
