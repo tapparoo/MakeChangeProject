@@ -80,25 +80,25 @@ public class CashRegister {
 	    change += "\n\tTwenties: " + this.twenty;
 	}
 	if (this.ten > 0) {
-	    change += "\n\tTens: " + this.ten;
+	    change += "\n\t    Tens: " + this.ten;
 	}
 	if (this.five > 0) {
-	    change += "\n\tFives: " + this.five;
+	    change += "\n\t   Fives: " + this.five;
 	}
 	if (this.one > 0) {
-	    change += "\n\tOnes: " + this.one;
+	    change += "\n\t    Ones: " + this.one;
 	}
 	if (this.quarter > 0) {
 	    change += "\n\tQuarters: " + this.quarter;
 	}
 	if (this.dime > 0) {
-	    change += "\n\tDimes: " + this.dime;
+	    change += "\n\t   Dimes: " + this.dime;
 	}
 	if (this.nickel > 0) {
-	    change += "\n\tNickels: " + this.nickel;
+	    change += "\n\t Nickels: " + this.nickel;
 	}
 	if (this.penny > 0) {
-	    change += "\n\tPennies: " + this.penny;
+	    change += "\n\t Pennies: " + this.penny;
 	}
 
 	return change;
