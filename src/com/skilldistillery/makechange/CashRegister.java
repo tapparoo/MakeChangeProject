@@ -10,7 +10,7 @@ public class CashRegister {
 	this.purchasePrice = price;
 	this.cashTendered = cash;
 	// Rounding/casting because I was getting some pretty random decimals
-	this.changeDue = (double)Math.round((this.cashTendered - this.purchasePrice) * 100)/100;
+	this.changeDue = (double) Math.round((this.cashTendered - this.purchasePrice) * 100) / 100;
     }
 
     public String makeChange() {
@@ -18,7 +18,7 @@ public class CashRegister {
 	    return "Insufficient funds.";
 	} else if (this.purchasePrice <= 0) {
 	    return "Invalid purchase price.";
-	} 
+	}
 	if (this.changeDue >= 1.0) {
 	    calcBills();
 	}
@@ -32,60 +32,50 @@ public class CashRegister {
     private void calcBills() {
 	// Casting to ignore coins
 	int changeDueRemaining = (int) this.changeDue;
-	int temp;
-	
+
 	if (changeDueRemaining >= 20) {
-	    temp = (byte) (changeDueRemaining / 20);
-	    this.twenty += temp;
-	    changeDueRemaining -= temp * 20;
+	    this.twenty += changeDueRemaining / 20;
+	    changeDueRemaining = changeDueRemaining % 20;
 	}
 	if (changeDueRemaining >= 10) {
-	    temp = (byte) (changeDueRemaining / 10);
-	    this.ten += temp;
-	    changeDueRemaining -= temp * 10;
+	    this.ten += changeDueRemaining / 10;
+	    changeDueRemaining = changeDueRemaining % 10;
 	}
 	if (changeDueRemaining >= 5) {
-	    temp = (byte) (changeDueRemaining / 5);
-	    this.five += temp;
-	    changeDueRemaining -= temp * 5;
+	    this.five += changeDueRemaining / 5;
+	    changeDueRemaining = changeDueRemaining % 5;
 	}
 	if (changeDueRemaining >= 1) {
-	    temp = (byte) (changeDueRemaining / 1);
-	    this.one += temp;
+	    this.one += changeDueRemaining;
 	}
     }
 
     private void calcCoins() {
-	// Casting to ignore dollar bills.  Multiply by 100 to work with integers for simplicity
-	int changeDueRemaining = (int)((this.changeDue - (int)this.changeDue) * 100);
-	double temp;
+	// Casting to ignore dollar bills. Multiply by 100 to work with integers for simplicity
+	int changeDueRemaining = (int)Math.round((this.changeDue - (int) this.changeDue) * 100);
 
 	if (changeDueRemaining >= 25) {
-	    temp = changeDueRemaining / 25;
-	    this.quarter += temp;
-	    changeDueRemaining -= temp * 25;
+	    this.quarter += changeDueRemaining / 25;
+	    changeDueRemaining = changeDueRemaining % 25;
 	}
 	if (changeDueRemaining >= 10) {
-	    temp = changeDueRemaining / 10;
-	    this.dime += temp;
-	    changeDueRemaining -= temp * 10;
+	    this.dime += changeDueRemaining / 10;
+	    changeDueRemaining = changeDueRemaining % 10;
 	}
 	if (changeDueRemaining >= 5) {
-	    temp = changeDueRemaining / 5;
-	    this.nickel += temp;
-	    changeDueRemaining -= temp * 5;
+	    this.nickel += changeDueRemaining / 5;
+	    changeDueRemaining = changeDueRemaining % 5;
 	}
 	if (changeDueRemaining >= 1) {
-	    temp = changeDueRemaining / 1;
-	    this.penny += temp;
+	    this.penny += changeDueRemaining / 1;
 	}
     }
 
     public String printChangeSummary() {
 	String change = "";
-	
+
 	change += "\nChange due to customer: $" + this.changeDue;
-	
+
 	if (this.twenty > 0) {
 	    change += "\n\tTwenties: " + this.twenty;
 	}
@@ -110,7 +100,7 @@ public class CashRegister {
 	if (this.penny > 0) {
 	    change += "\n\tPennies: " + this.penny;
 	}
-	
+
 	return change;
     }
 }
