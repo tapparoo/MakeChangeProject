@@ -5,36 +5,42 @@ import java.util.Scanner;
 
 public class MakeChangeApp {
 
-    public static void main(String[] args) {
-	Scanner sc = new Scanner(System.in);
-	double totalPrice, cashTendered;
-	CashRegister register;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		double totalPrice, cashTendered;
+		CashRegister register;
 
-	System.out.print("Use the GUI? Y/N: ");
-	
-	if (sc.next().equalsIgnoreCase("y")) {
-	    useGui();
-	} else {
+		System.out.print("Use the GUI? Y/N: ");
 
-	    try {
-		System.out.print("Enter the purchase price: ");
-		totalPrice = sc.nextDouble();
+		if (sc.next().equalsIgnoreCase("y")) {
+			useGui();
+		} else {
 
-		System.out.print("How much cash do you have? ");
-		cashTendered = sc.nextDouble();
+			String tryAgain;
+			do {
+				try {
+					System.out.print("Enter the purchase price: ");
+					totalPrice = sc.nextDouble();
 
-		register = new CashRegister(totalPrice, cashTendered);
-		System.out.println(register.makeChange());
+					System.out.print("How much cash do you have? ");
+					cashTendered = sc.nextDouble();
 
-	    } catch (InputMismatchException e) {
-		System.out.print("Invalid input.");
-	    }
+					register = new CashRegister(totalPrice, cashTendered);
+					System.out.println(register.makeChange());
+
+				} catch (InputMismatchException e) {
+					System.out.print("Invalid input.");
+				}
+				System.out.print("\nTry again? (Y/N)");
+				tryAgain = sc.next();
+			} while (tryAgain.equalsIgnoreCase("y"));
+		}
+		sc.close();
+
 	}
-	sc.close();
-    }
 
-    public static void useGui() {
-	CashRegisterGUI gui = new CashRegisterGUI();
-	gui.init();
-    }
+	public static void useGui() {
+		CashRegisterGUI gui = new CashRegisterGUI();
+		gui.init();
+	}
 }
