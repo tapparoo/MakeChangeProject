@@ -7,6 +7,9 @@ This project simulates a cash register.
 
 This is Week 1 [Skill Distillery](http://skilldistillery.com) weekend homework.
 
+1. A runnable jar can be found [here](https://github.com/tapparoo/MakeChangeProject/raw/master/MakeChange-Runnable.jar)
+2. Download and run in the console via: "java -jar MakeChange-Runnable.jar"
+
 ### Technologies Used
 * Java
 * Git command line
